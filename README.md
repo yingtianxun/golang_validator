@@ -12,12 +12,14 @@
   则可以这样写`valid:"PosNO，Str"
  name则表示当前字段的名字
  如要进行扩展，验证函数的格式如下：
- func (this *Validator) CheckPosNO(data int, tag reflect.StructTag) error {
-	 if data <= 0 {
-		 return errors.New(tag.Get("name") + ":不能为负数!")
+ 
+	 func (this *Validator) CheckPosNO(data int, tag reflect.StructTag) error {
+		 if data <= 0 {
+			 return errors.New(tag.Get("name") + ":不能为负数!")
+		 }
+		 return nil
 	 }
-	 return nil
- }
+ 
  Check表示函数的前缀
  而在调用的时候在标签上写：PosNO 即可
  
